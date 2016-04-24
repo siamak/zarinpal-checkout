@@ -1,6 +1,6 @@
 {
   "name": "zarinpal-checkout",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple implementation of ZarinPal nodejs api so you can quickly start using API.",
   "main": "index.js",
   "keywords": [
@@ -11,7 +11,6 @@
   "author": "Siamak Mokhtari <s.mokhtari75@gmail.com> (http://siamak.us)",
   "license": "MIT",
   "dependencies": {
-    "eslint": "^2.8.0",
     "request": "^2.72.0"
   }
 }

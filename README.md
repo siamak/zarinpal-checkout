@@ -13,7 +13,7 @@ Install package from `npm` and Import to Project:
 ```javascript
 var ZarinpalCheckout = require('zarinpal-checkout');
 ```
-and Config package:
+Config package:
 ```javascript
 var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
 
@@ -23,14 +23,19 @@ var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', f
  */
 zarinpal.PaymentRequest('1000', 'http://siamak.us', 'Hello NodeJS API.', 'hi@siamak.work', '09120000000', function (status, url) {
 	if (status === 100) {
-		res.redirect(url);
+		console.log(url);
 	}
 });
 ```
 
-### 🍦🍦🍦 [Available: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
+### 🍦🍦🍦 [DEMO: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
 ---
-<!-- Please feel free to comment and contribute. -->
+## 🔆 TODO:
+* Add Extra mode for API.
+* Unit testing.
+
+---
+Please feel free to comment and contribute.
 
 ## 🍀 License
 Copyright (c) 2016 Siamak Mokhtari. Licensed under [MIT](http://siamak.mit-license.org).
