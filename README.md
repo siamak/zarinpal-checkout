@@ -7,6 +7,28 @@ ZarinPal Checkout implementation in Node.JS
 npm install zarinpal-checkout
 ```
 
+## 🕹 Usage
+
+Install package from `npm` and Import to Project:
+```javascript
+var ZarinpalCheckout = require('zarinpal-checkout');
+```
+and Config package:
+```javascript
+var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
+
+/**
+ * PaymentRequest [module]
+ * @return {String} URL [Payement Authority]
+ */
+zarinpal.PaymentRequest('1000', 'http://siamak.us', 'Hello NodeJS API.', 'hi@siamak.work', '09120000000', function (status, url) {
+	if (status === 100) {
+		res.redirect(url);
+	}
+});
+```
+
+### 🍦🍦🍦 [Available: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
 ---
 <!-- Please feel free to comment and contribute. -->
 
