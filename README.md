@@ -1,5 +1,8 @@
 # 💰 ZarinPal Checkout
 ZarinPal Checkout implementation in Node.JS
+* Easy to Use.
+* Promises/A+ compatibility.
+* RESTful API.
 
 ## 💡 Installation
 
@@ -16,23 +19,72 @@ var ZarinpalCheckout = require('zarinpal-checkout');
 Config package:
 ```javascript
 var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
-
+```
+###### ★ PaymentRequest:
+```javascript
 /**
  * PaymentRequest [module]
  * @return {String} URL [Payement Authority]
  */
-zarinpal.PaymentRequest('1000', 'http://siamak.us', 'Hello NodeJS API.', 'hi@siamak.work', '09120000000', function (status, url) {
-	if (status === 100) {
-		console.log(url);
+zarinpal.PaymentRequest({
+	Amount: '1000',
+	CallbackURL: 'http://siamak.us',
+	Description: 'Hello NodeJS API.',
+	Email: 'hi@siamak.work',
+	Mobile: '09120000000'
+}).then(function (response) {
+	if (response.status == 100) {
+		// res.redirect(url);
+		console.log(response.url);
 	}
+}).catch(function (err) {
+	console.log(err);
 });
 ```
-
+###### ★ PaymentVerification:
+```javascript
+zarinpal.PaymentVerification({
+	Amount: '1000',
+	Authority: '000000000000000000000000000000000000',
+}).then(function (response) {
+	if (response.status == -21) {
+		console.log('Empty!');
+	} else {
+		console.log('Yohoooo! ' + response.RefID);
+	}
+}).catch(function (err) {
+	console.log(err);
+});
+```
+###### ★ UnverifiedTransactions:
+```javascript
+zarinpal.UnverifiedTransactions().then(function (response) {
+	if (response.status == 100) {
+		console.log(response.authorities);
+	}
+}).catch(function (err) {
+	console.log(err);
+});
+```
+###### ★ RefreshAuthority:
+```javascript
+zarinpal.RefreshAuthority({
+	Authority: '000000000000000000000000000000000000',
+	Expire: '1800'
+}).then(function (response) {
+	if (response.status == 100) {
+		console.log(response.status);
+	}
+}).catch(function (err) {
+	console.log(err);
+});
+```
 ### 🍦🍦🍦 [DEMO: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
 ---
-## 🔆 TODO:
-* Add Extra mode for API.
-* Unit testing.
+## 🔆 TODO
+- [ ] Add Extra mode for API.
+- [x] Promises/A+
+- [ ] Unit testing.
 
 ---
 Please feel free to comment and contribute.
