@@ -1,7 +1,8 @@
-# 💰 ZarinPal Checkout
+# ZarinPal Checkout
 ZarinPal Checkout implementation in Node.JS
 * Easy to Use.
 * Promises/A+ compatibility.
+* Sandbox ENV.
 * RESTful API.
 
 ## 💡 Installation
@@ -18,6 +19,11 @@ var ZarinpalCheckout = require('zarinpal-checkout');
 ```
 Config package:
 ```javascript
+/**
+ * Create ZarinPal
+ * @param {String} `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` [Merchant ID]
+ * @param {bool} false [toggle `Sandbox` mode]
+ */
 var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
 ```
 ###### ★ PaymentRequest:
@@ -34,7 +40,6 @@ zarinpal.PaymentRequest({
 	Mobile: '09120000000'
 }).then(function (response) {
 	if (response.status == 100) {
-		// res.redirect(url);
 		console.log(response.url);
 	}
 }).catch(function (err) {
