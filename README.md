@@ -89,7 +89,7 @@ zarinpal.RefreshAuthority({
 ## 🔆 TODO
 - [ ] Add Extra mode for API.
 - [x] Promises/A+
-- [ ] Unit testing.
+- [x] Unit testing `mocha`.
 
 ---
 Please feel free to comment and contribute.

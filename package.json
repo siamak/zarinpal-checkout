@@ -2,11 +2,14 @@
   "name": "zarinpal-checkout",
   "version": "0.2.1",
   "description": "Simple implementation of ZarinPal nodejs api so you can quickly start using API.",
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/siamakmokhtari/zarinpal-checkout"
   },
-	"main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha"
+  },
+  "main": "index.js",
   "keywords": [
     "zarinpal",
     "nodejs",
@@ -17,8 +20,11 @@
   "dependencies": {
     "request-promise": "^3.0.0"
   },
-	"bugs": {
+  "bugs": {
     "url": "https://github.com/siamakmokhtari/zarinpal-checkout/issues"
   },
-	"homepage": "https://github.com/siamakmokhtari/zarinpal-checkout"
+  "homepage": "https://github.com/siamakmokhtari/zarinpal-checkout",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
 }
