@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/siamakmokhtari/zarinpal-checkout",
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "mocha": "^2.5.0"
   }
 }
