@@ -1,4 +1,4 @@
-# ZarinPal Checkout
+# ZarinPal Checkout:  [![Build Status](https://travis-ci.org/siamak/zarinpal-checkout.svg?branch=master)](https://travis-ci.org/siamak/zarinpal-checkout)
 ZarinPal Checkout implementation in Node.JS
 * Easy to Use.
 * Promises/A+ compatibility.
