@@ -1,101 +1,106 @@
 # ZarinPal Checkout:  [![Build Status](https://travis-ci.org/siamak/zarinpal-checkout.svg?branch=master)](https://travis-ci.org/siamak/zarinpal-checkout)
-ZarinPal Checkout implementation in Node.JS
-* Easy to Use.
-* Promises/A+ compatibility.
-* Sandbox ENV.
-* RESTful API.
-
-## 💡 Installation
-
-```bash
-npm install zarinpal-checkout
-```
+[ZarinPal Checkout](https://www.zarinpal.com/) implementation in Node.JS
+* Easy to Use
+* Promises/A+ Compatible
+* Sandboxing
 
 ## 🕹 Usage
-
-Install package from `npm` and Import to Project:
-```javascript
-var ZarinpalCheckout = require('zarinpal-checkout');
+Install the package from `npm` and require it in your Node project:
+```bash
+npm install --save zarinpal-checkout
 ```
-Config package:
+
+```javascript
+const ZarinpalCheckout = require('zarinpal-checkout');
+// or
+import ZarinPalCheckout from 'zarinpal-checkout';
+```
+
+Then create an instance:
 ```javascript
 /**
  * Create ZarinPal
  * @param {String} `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` [Merchant ID]
- * @param {bool} false [toggle `Sandbox` mode]
+ * @param {Boolean} false [toggle `Sandbox` mode]
  */
-var zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
+const zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
 ```
-###### ★ PaymentRequest:
+
+## 📢 API
+### ★ Payment Request:
 ```javascript
 /**
  * PaymentRequest [module]
  * @return {String} URL [Payement Authority]
  */
 zarinpal.PaymentRequest({
-	Amount: '1000',
-	CallbackURL: 'http://siamak.us',
-	Description: 'Hello NodeJS API.',
-	Email: 'hi@siamak.work',
-	Mobile: '09120000000'
-}).then(function (response) {
-	if (response.status == 100) {
-		console.log(response.url);
-	}
-}).catch(function (err) {
-	console.log(err);
+  Amount: '1000', // In Tomans
+  CallbackURL: 'https://your-safe-api/example/zarinpal/validate',
+  Description: 'A Payment from Node.JS',
+  Email: 'hi@siamak.work',
+  Mobile: '09120000000'
+}).then(response => {
+  if (response.status === 100) {
+    console.log(response.url);
+  }
+}).catch(err => {
+  console.error(err);
 });
 ```
-###### ★ PaymentVerification:
+
+### ★ Payment Verification:
 ```javascript
 zarinpal.PaymentVerification({
-	Amount: '1000',
-	Authority: '000000000000000000000000000000000000',
-}).then(function (response) {
-	if (response.status == -21) {
-		console.log('Empty!');
-	} else {
-		console.log('Yohoooo! ' + response.RefID);
-	}
-}).catch(function (err) {
-	console.log(err);
+  Amount: '1000', // In Tomans
+  Authority: '000000000000000000000000000000000000',
+}).then(response => {
+  if (response.status === -21) {
+    console.log('Empty!');
+  } else {
+    console.log(`Verified! Ref ID: ${response.RefID}`);
+  }
+}).catch(err => {
+  console.error(err);
 });
 ```
-###### ★ UnverifiedTransactions:
+### ★ Unverified Transactions:
 ```javascript
-zarinpal.UnverifiedTransactions().then(function (response) {
-	if (response.status == 100) {
-		console.log(response.authorities);
-	}
-}).catch(function (err) {
-	console.log(err);
+zarinpal.UnverifiedTransactions().then(response =>
+  if (response.status === 100) {
+    console.log(response.authorities);
+  }
+}).catch(err => {
+  console.error(err);
 });
 ```
-###### ★ RefreshAuthority:
+### ★ Refresh Authority:
 ```javascript
 zarinpal.RefreshAuthority({
-	Authority: '000000000000000000000000000000000000',
-	Expire: '1800'
-}).then(function (response) {
-	if (response.status == 100) {
-		console.log(response.status);
-	}
-}).catch(function (err) {
-	console.log(err);
+  Authority: '000000000000000000000000000000000000',
+  Expire: '1800'
+}).then(response => {
+  if (response.status === 100) {
+    console.log(response.status);
+  }
+}).catch(err => {
+  console.error(err);
 });
 ```
 ### 🍦🍦🍦 [DEMO: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
+
 ---
-## 🔆 TODO
+
+## 🔆 To-Do
 - [ ] Add Extra mode for API.
 - [x] Promises/A+
 - [x] Unit testing `mocha`.
 
----
-Please feel free to comment and contribute.
+## 👋 Contribution
+Contributions are welcome. Please submit PRs or just file an issue if you see something broken or in
+need of improving.
 
 ## 🍀 License
-Copyright (c) 2016 Siamak Mokhtari. Licensed under [MIT](http://siamak.mit-license.org).
+This software is released under the [MIT License](http://siamak.mit-license.org).
 
 ```
 The MIT License (MIT)
