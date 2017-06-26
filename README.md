@@ -5,9 +5,11 @@
 * Sandboxing
 
 ## 🕹 Usage
-Install the package from `npm` and require it in your Node project:
+Install the package from `npm` or `yarn` and require it in your Node project:
 ```bash
-npm install --save zarinpal-checkout
+npm install zarinpal-checkout
+# or
+yarn add zarinpal-checkout
 ```
 
 ```javascript
@@ -105,7 +107,7 @@ This software is released under the [MIT License](http://siamak.mit-license.org)
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015 Siamak Mokhtari s.mokhtari75@gmail.com
+Copyright (c) 2015-2017 Siamak Mokhtari s.mokhtari75@gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
