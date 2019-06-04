@@ -56,7 +56,7 @@ zarinpal.PaymentVerification({
   Amount: '1000', // In Tomans
   Authority: '000000000000000000000000000000000000',
 }).then(response => {
-  if (response.status === -21) {
+  if (response.status !== 100) {
     console.log('Empty!');
   } else {
     console.log(`Verified! Ref ID: ${response.RefID}`);
