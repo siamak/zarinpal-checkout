@@ -24,8 +24,17 @@ Then create an instance:
  * Create ZarinPal
  * @param {String} `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` [Merchant ID]
  * @param {Boolean} false [toggle `Sandbox` mode]
+ * @param {Object} extraRequestParams
  */
 const zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
+```
+
+We're using `request` npm module for http calls. So you can pass an object as third argument
+to configure `timeout` and etc.
+```
+const zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false, {
+  timeout: 3000
+});
 ```
 
 ## 📢 API
