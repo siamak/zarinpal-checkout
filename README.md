@@ -27,6 +27,13 @@ Then create an instance:
  */
 const zarinpal = ZarinpalCheckout.create('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', false);
 ```
+## Typescript Definitions
+```bash
+npm install @types/zarinpal-checkout
+# or
+yarn add @types/zarinpal-checkout
+```
+Definitions are currently maintained in the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/zarinpal-checkout) repo.
 
 ## 📢 API
 ### ★ Payment Request:
