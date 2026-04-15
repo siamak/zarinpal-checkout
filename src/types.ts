@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export type Currency = 'IRR' | 'IRT';
 
@@ -55,11 +55,17 @@ export interface ZarinPalError {
   };
 }
 
+
+export interface HttpClient {
+  request: <T = unknown>(config: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
+}
+
 export interface ZarinPalClientOptions {
   sandbox?: boolean;
   currency?: Currency;
   timeoutMs?: number;
   axiosConfig?: Omit<AxiosRequestConfig, 'method' | 'url' | 'data'>;
+  httpClient?: HttpClient;
 }
 
 export interface ZarinPalModule {

@@ -6,25 +6,24 @@
     "type": "git",
     "url": "https://github.com/siamak/zarinpal-checkout"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "clean": "rimraf dist coverage",
     "lint": "eslint src test --ext .ts",
-    "test": "vitest run --coverage",
-    "test:watch": "vitest",
+    "test": "node --test --experimental-strip-types test/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
@@ -47,9 +46,13 @@
     "axios": "^1.9.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
     "eslint": "^8.57.1",
+    "rollup": "^4.40.0",
+    "rollup-plugin-dts": "^6.2.1",
     "rimraf": "^6.0.1",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "typescript": "^5.8.3"
   }
 }

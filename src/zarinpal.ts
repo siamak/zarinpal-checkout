@@ -1,4 +1,4 @@
-import axios, { type AxiosInstance } from 'axios';
+import axios from 'axios';
 import { API_BASE_URL, API_PATHS, MERCHANT_ID_LENGTH, START_PAY_BASE_URL } from './config';
 import type {
   Currency,
@@ -10,7 +10,8 @@ import type {
   RefreshAuthorityResponse,
   UnverifiedTransactionsResponse,
   ZarinPalClientOptions,
-  ZarinPalError
+  ZarinPalError,
+  HttpClient
 } from './types';
 
 interface RequestPayload {
@@ -45,7 +46,7 @@ export class ZarinPalCheckout {
   public readonly merchant: string;
   public readonly sandbox: boolean;
   public readonly currency: Currency;
-  private readonly client: AxiosInstance;
+  private readonly client: HttpClient;
 
   public constructor(merchantId: string, options: ZarinPalClientOptions = {}) {
     if (merchantId.length !== MERCHANT_ID_LENGTH) {
@@ -60,7 +61,7 @@ export class ZarinPalCheckout {
       throw new Error("Invalid currency. Valid options are 'IRR' or 'IRT'.");
     }
 
-    this.client = axios.create({
+    this.client = options.httpClient ?? axios.create({
       timeout: options.timeoutMs ?? 10_000,
       headers: {
         accept: 'application/json',

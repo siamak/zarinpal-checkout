@@ -6,9 +6,9 @@ A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release k
 
 - ✅ TypeScript-first with bundled type definitions
 - ✅ Backward-compatible APIs (`create`, `PaymentRequest`, `PaymentVerification`, `UnverifiedTransactions`, `RefreshAuthority`, `TokenBeautifier`)
-- ✅ Modern test suite with Vitest
+- ✅ Fast built-in Node.js test runner (no Vite dependency)
 - ✅ Strict linting + type-checking workflows
-- ✅ Clean build output with generated declaration files
+- ✅ Rollup build output (ESM + CJS) with declaration bundling
 
 ## Installation
 
