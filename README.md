@@ -13,7 +13,14 @@ A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release k
 ## Installation
 
 ```bash
+# npm
 npm install zarinpal-checkout
+
+# yarn
+yarn add zarinpal-checkout
+
+# pnpm
+pnpm add zarinpal-checkout
 ```
 
 ## Usage
@@ -72,11 +79,14 @@ Preserves previous token beautifier behavior.
 ## Development
 
 ```bash
-npm install
-npm run lint
-npm run typecheck
-npm test
-npm run build
+# npm
+npm install && npm run lint && npm run typecheck && npm test && npm run build
+
+# yarn
+yarn install && yarn lint && yarn typecheck && yarn test && yarn build
+
+# pnpm
+pnpm install && pnpm lint && pnpm typecheck && pnpm test && pnpm build
 ```
 
 ## License
