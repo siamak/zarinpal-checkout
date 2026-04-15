@@ -4,7 +4,7 @@
   "description": "Type-safe ZarinPal checkout client for Node.js with modern tooling and backwards-compatible API methods.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/siamak/zarinpal-checkout"
+    "url": "git+https://github.com/siamak/zarinpal-checkout.git"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
