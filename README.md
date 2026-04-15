@@ -42,6 +42,13 @@ pnpm add zarinpal-checkout
 Official ZarinPal documentation: [https://www.zarinpal.com/docs/](https://www.zarinpal.com/docs/)
 Project wiki: [https://github.com/siamak/zarinpal-checkout/wiki](https://github.com/siamak/zarinpal-checkout/wiki)
 
+### Express Example App
+
+If you want a ready-to-run Express integration using this package, see:
+
+- Repository: [zarinpal-express-checkout](https://github.com/siamak/zarinpal-express-checkout/blob/main/README.md)
+- Raw README: [https://github.com/siamak/zarinpal-express-checkout/raw/refs/heads/main/README.md](https://github.com/siamak/zarinpal-express-checkout/raw/refs/heads/main/README.md)
+
 ### Backward-compatible API (recommended for existing users)
 
 ```ts
