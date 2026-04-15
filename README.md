@@ -38,6 +38,8 @@ pnpm add zarinpal-checkout
 
 ## Usage
 
+Official ZarinPal documentation: [https://www.zarinpal.com/docs/](https://www.zarinpal.com/docs/)
+
 ### Backward-compatible API (recommended for existing users)
 
 ```ts
@@ -111,10 +113,10 @@ npm install && npm run lint && npm run typecheck && npm test && npm run build
 
 ```
 
+## Author
+
+- Siamak Mokhtari
+
 ## License
 
 MIT
-
-## Author
-
-- siamak
