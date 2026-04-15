@@ -59,6 +59,20 @@ const zarinpal = createWithOptions('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', {
 });
 ```
 
+
+## Examples
+
+The `examples/` directory includes runnable examples for every public method:
+
+- `examples/create-client.ts`
+- `examples/payment-request.ts`
+- `examples/payment-verification.ts`
+- `examples/unverified-transactions.ts`
+- `examples/refresh-authority.ts`
+- `examples/token-beautifier.ts`
+
+Run with your preferred TypeScript runtime (for example `tsx` or `ts-node`) after replacing the merchant ID and callback URLs.
+
 ## API Reference
 
 ### `PaymentRequest(input)`
