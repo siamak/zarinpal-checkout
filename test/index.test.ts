@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import ZarinpalCheckout, { createWithOptions } from '../src/index';
+import ZarinpalCheckout, { createWithOptions } from '../src/index.ts';
 
 interface RequestCall {
   url: string;

@@ -96,11 +96,6 @@ Preserves previous token beautifier behavior.
 # npm
 npm install && npm run lint && npm run typecheck && npm test && npm run build
 
-# yarn
-yarn install && yarn lint && yarn typecheck && yarn test && yarn build
-
-# pnpm
-pnpm install && pnpm lint && pnpm typecheck && pnpm test && pnpm build
 ```
 
 ## License

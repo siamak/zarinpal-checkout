@@ -26,6 +26,9 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
+        compilerOptions: {
+          module: 'ESNext'
+        },
         declaration: false,
         declarationMap: false,
         outDir: undefined

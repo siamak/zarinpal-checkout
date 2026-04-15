@@ -1,6 +1,8 @@
-import { version } from '../package.json';
-import { ZarinPalCheckout } from './zarinpal';
-import type { Currency, ZarinPalClientOptions, ZarinPalModule } from './types';
+// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
+import { ZarinPalCheckout } from './zarinpal.ts';
+import type { Currency, ZarinPalClientOptions, ZarinPalModule } from './types.ts';
+
+const version = '1.0.0';
 
 const createWithOptions = (merchantId: string, options: ZarinPalClientOptions = {}): ZarinPalCheckout => {
   return new ZarinPalCheckout(merchantId, options);
@@ -18,4 +20,5 @@ const ZarinpalCheckout: ZarinPalModule = {
 
 export { ZarinPalCheckout, create, createWithOptions, version };
 export default ZarinpalCheckout;
-export * from './types';
+// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
+export * from './types.ts';

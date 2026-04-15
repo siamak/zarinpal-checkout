@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { API_BASE_URL, API_PATHS, MERCHANT_ID_LENGTH, START_PAY_BASE_URL } from './config';
+// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
+import { API_BASE_URL, API_PATHS, MERCHANT_ID_LENGTH, START_PAY_BASE_URL } from './config.ts';
 import type {
   Currency,
   PaymentRequestInput,
@@ -12,7 +13,7 @@ import type {
   ZarinPalClientOptions,
   ZarinPalError,
   HttpClient
-} from './types';
+} from './types.ts';
 
 interface RequestPayload {
   merchant_id: string;
