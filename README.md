@@ -19,7 +19,7 @@ A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release k
 - ✅ Sandbox and production mode support
 - ✅ Currency support for `IRR` and `IRT`
 - ✅ Configurable request timeout handling
-- ✅ Fast built-in Node.js test runner (no Vite dependency)
+- ✅ Fast built-in Node.js test runner
 - ✅ Strict linting + type-checking workflows
 - ✅ Rollup build output (ESM + CJS) with declaration bundling
 - ✅ Ready-to-run examples for all public methods
