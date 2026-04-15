@@ -5,9 +5,7 @@ A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release k
 ![zarinpal-checkout cover](./cover.svg)
 
 [![npm version](https://img.shields.io/npm/v/zarinpal-checkout.svg)](https://www.npmjs.com/package/zarinpal-checkout)
-[![npm downloads (daily)](https://img.shields.io/npm/dy/zarinpal-checkout?label=daily%20downloads)](https://www.npmjs.com/package/zarinpal-checkout)
-[![npm downloads (weekly)](https://img.shields.io/npm/dw/zarinpal-checkout?label=weekly%20downloads)](https://www.npmjs.com/package/zarinpal-checkout)
-[![npm downloads (monthly)](https://img.shields.io/npm/dm/zarinpal-checkout?label=monthly%20downloads)](https://www.npmjs.com/package/zarinpal-checkout)
+[![npm total downloads](https://img.shields.io/npm/dt/zarinpal-checkout?label=total%20downloads)](https://www.npmjs.com/package/zarinpal-checkout)
 [![CI](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml/badge.svg)](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
