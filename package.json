@@ -46,6 +46,9 @@
   "dependencies": {
     "axios": "^1.9.0"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.60.1"
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@rollup/plugin-commonjs": "^28.0.3",
