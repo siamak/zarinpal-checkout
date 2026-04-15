@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  quality:
+    name: ${{ matrix.manager }} / node${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20]
+        manager: [npm, yarn, pnpm]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Enable Corepack
+        if: matrix.manager != 'npm'
+        run: corepack enable
+
+      - name: Install dependencies (npm)
+        if: matrix.manager == 'npm'
+        run: npm install
+
+      - name: Install dependencies (yarn)
+        if: matrix.manager == 'yarn'
+        run: yarn install
+
+      - name: Install dependencies (pnpm)
+        if: matrix.manager == 'pnpm'
+        run: pnpm install
+
+      - name: Lint
+        run: ${{ matrix.manager }} run lint
+
+      - name: Type check
+        run: ${{ matrix.manager }} run typecheck
+
+      - name: Test
+        run: ${{ matrix.manager }} run test
+
+      - name: Build
+        run: ${{ matrix.manager }} run build

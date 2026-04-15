@@ -1,168 +1,120 @@
-# ZarinPal Checkout: [![Build Status](https://travis-ci.org/siamak/zarinpal-checkout.svg?branch=master)](https://travis-ci.org/siamak/zarinpal-checkout)
+# zarinpal-checkout
 
-[ZarinPal Checkout](https://www.zarinpal.com/) implementation in Node.JS
+A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release keeps backward-compatible method names while upgrading internals, tooling, and tests.
 
-- Easy to Use
-- Promises/A+ Compatible
-- Sandboxing
+## Features
 
-## 🕹 Usage
+- ✅ TypeScript-first with bundled type definitions
+- ✅ Backward-compatible APIs (`create`, `PaymentRequest`, `PaymentVerification`, `UnverifiedTransactions`, `RefreshAuthority`, `TokenBeautifier`)
+- ✅ Fast built-in Node.js test runner (no Vite dependency)
+- ✅ Strict linting + type-checking workflows
+- ✅ Rollup build output (ESM + CJS) with declaration bundling
 
-Install the package from `npm` or `yarn` and require it in your Node project:
+## Installation
 
 ```bash
+# npm
 npm install zarinpal-checkout
-# or
+
+# yarn
 yarn add zarinpal-checkout
+
+# pnpm
+pnpm add zarinpal-checkout
 ```
 
-```javascript
-const ZarinpalCheckout = require("zarinpal-checkout");
-// or
-import ZarinPalCheckout from "zarinpal-checkout";
-```
+## Usage
 
-Then create an instance:
+### Backward-compatible API (recommended for existing users)
 
-```javascript
-/**
- * Create ZarinPal
- * @param {String} `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` [Merchant ID]
- * @param {Boolean} false [toggle `Sandbox` mode]
- * @param {String} `IRR` or `IRT` [Currency - For default `IRT`]
- */
+```ts
+import ZarinpalCheckout from 'zarinpal-checkout';
+
 const zarinpal = ZarinpalCheckout.create(
-  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
   false,
-  "IRT"
+  'IRT'
 );
+
+const request = await zarinpal.PaymentRequest({
+  Amount: 1000,
+  CallbackURL: 'https://example.com/payment/callback',
+  Description: 'Order #123',
+  Email: 'user@example.com',
+  Mobile: '09120000000'
+});
+
+console.log(request.url);
 ```
 
-## Typescript Definitions
+### Options-based API
 
-```bash
-npm install @types/zarinpal-checkout
-# or
-yarn add @types/zarinpal-checkout
-```
+```ts
+import { createWithOptions } from 'zarinpal-checkout';
 
-Definitions are currently maintained in the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/zarinpal-checkout) repo.
-
-## 📢 API
-
-### ★ Payment Request:
-
-```javascript
-/**
- * PaymentRequest [module]
- * @return {String} URL [Payement Authority]
- */
-zarinpal
-  .PaymentRequest({
-    Amount: "1000", // In Tomans
-    CallbackURL: "https://your-safe-api/example/zarinpal/validate",
-    Description: "A Payment from Node.JS",
-    Email: "hi@siamak.work",
-    Mobile: "09120000000",
-  })
-  .then((response) => {
-    if (response.status === 100) {
-      console.log(response.url);
-    }
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-```
-
-### ★ Payment Verification:
-
-```javascript
-zarinpal
-  .PaymentVerification({
-    Amount: "1000", // In Tomans
-    Authority: "000000000000000000000000000000000000",
-  })
-  .then((response) => {
-    if (response.status !== 100) {
-      console.log("Empty!");
-    } else {
-      console.log(`Verified! Ref ID: ${response.RefID}`);
-    }
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-```
-
-### ★ Unverified Transactions:
-
-```javascript
-zarinpal.UnverifiedTransactions().then(response =>
-  if (response.status === 100) {
-    console.log(response.authorities);
-  }
-}).catch(err => {
-  console.error(err);
+const zarinpal = createWithOptions('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', {
+  sandbox: true,
+  currency: 'IRR',
+  timeoutMs: 8000
 });
 ```
 
-### ★ Refresh Authority:
 
-```javascript
-zarinpal
-  .RefreshAuthority({
-    Authority: "000000000000000000000000000000000000",
-    Expire: "1800",
-  })
-  .then((response) => {
-    if (response.status === 100) {
-      console.log(response.status);
-    }
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+## Examples
+
+The `examples/` directory includes runnable examples for every public method:
+
+- `examples/create-client.ts`
+- `examples/payment-request.ts`
+- `examples/payment-verification.ts`
+- `examples/unverified-transactions.ts`
+- `examples/refresh-authority.ts`
+- `examples/token-beautifier.ts`
+
+Run with your preferred TypeScript runtime (for example `tsx` or `ts-node`) after replacing the merchant ID and callback URLs.
+
+## API Reference
+
+### `PaymentRequest(input)`
+Creates a payment authority.
+
+### `PaymentVerification(input)`
+Verifies a completed payment authority.
+
+### `UnverifiedTransactions()`
+Fetches unverified authorities.
+
+### `RefreshAuthority(input)`
+Refreshes an existing authority expiration.
+
+### `TokenBeautifier(token)`
+Preserves previous token beautifier behavior.
+
+
+## Releases & npm Publish
+
+This repository includes automated release and publish workflows:
+
+- `.github/workflows/release-please.yml`: creates/updates release PRs and GitHub releases from conventional commits.
+- `.github/workflows/publish.yml`: publishes to npm automatically when a GitHub Release is published.
+
+### Required GitHub Secrets
+
+- `NPM_TOKEN`: npm automation token with publish access for `zarinpal-checkout`.
+
+## Development
+
+```bash
+# npm
+npm install && npm run lint && npm run typecheck && npm test && npm run build
+
+# yarn
+yarn install && yarn lint && yarn typecheck && yarn test && yarn build
+
+# pnpm
+pnpm install && pnpm lint && pnpm typecheck && pnpm test && pnpm build
 ```
 
-### 🍦🍦🍦 [DEMO: ZarinPal Express checkout](https://github.com/siamakmokhtari/zarinpal-express-checkout).
+## License
 
----
-
-## 🔆 To-Do
-
-- [ ] Add Extra mode for API.
-- [x] Promises/A+
-- [x] Unit testing `mocha`.
-
-## 👋 Contribution
-
-Contributions are welcome. Please submit PRs or just file an issue if you see something broken or in
-need of improving.
-
-## 🍀 License
-
-This software is released under the [MIT License](http://siamak.mit-license.org).
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2015-2017 Siamak Mokhtari s.mokhtari75@gmail.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-```
+MIT
