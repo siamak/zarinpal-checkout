@@ -1,5 +1,3 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-
 export type Currency = 'IRR' | 'IRT';
 
 export interface PaymentRequestInput {
@@ -55,16 +53,32 @@ export interface ZarinPalError {
   };
 }
 
+export interface HttpRequestConfig {
+  url: string;
+  method: 'POST';
+  data: unknown;
+}
+
+export interface HttpResponse<T = unknown> {
+  data: T;
+}
 
 export interface HttpClient {
-  request: <T = unknown>(config: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
+  request: <T = unknown>(config: HttpRequestConfig) => Promise<HttpResponse<T>>;
+}
+
+export interface DefaultHttpClientOptions {
+  timeoutMs?: number;
+  headers?: Record<string, string>;
 }
 
 export interface ZarinPalClientOptions {
   sandbox?: boolean;
   currency?: Currency;
   timeoutMs?: number;
-  axiosConfig?: Omit<AxiosRequestConfig, 'method' | 'url' | 'data'>;
+  requestConfig?: Omit<DefaultHttpClientOptions, 'timeoutMs'>;
+  /** @deprecated Use requestConfig instead. */
+  axiosConfig?: Omit<DefaultHttpClientOptions, 'timeoutMs'>;
   httpClient?: HttpClient;
 }
 

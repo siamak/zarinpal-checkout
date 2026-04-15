@@ -43,9 +43,6 @@
   "engines": {
     "node": ">=18"
   },
-  "dependencies": {
-    "axios": "^1.9.0"
-  },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.60.1"
   },
