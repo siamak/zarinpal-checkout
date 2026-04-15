@@ -49,6 +49,10 @@ jobs:
 
       - name: Verify tag matches package version
         run: |
+          if [ "${GITHUB_REF_TYPE}" != "tag" ]; then
+            echo "Skipping tag/version check for non-tag ref: ${GITHUB_REF_NAME}"
+            exit 0
+          fi
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           TAG_VERSION=${GITHUB_REF_NAME#v}
           if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
