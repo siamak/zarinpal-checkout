@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/siamak/zarinpal-checkout/issues"
   },
-  "homepage": "https://github.com/siamak/zarinpal-checkout#readme",
+  "homepage": "https://github.com/siamak/zarinpal-checkout/wiki",
   "engines": {
     "node": ">=18"
   },

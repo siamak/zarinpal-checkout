@@ -7,6 +7,7 @@ A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release k
 [![npm version](https://img.shields.io/npm/v/zarinpal-checkout.svg)](https://www.npmjs.com/package/zarinpal-checkout)
 [![npm total downloads](https://img.shields.io/npm/dt/zarinpal-checkout?label=total%20downloads)](https://www.npmjs.com/package/zarinpal-checkout)
 [![CI](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml/badge.svg)](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml)
+[![Wiki](https://img.shields.io/badge/Wiki-Documentation-blue)](https://github.com/siamak/zarinpal-checkout/wiki)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
@@ -39,6 +40,7 @@ pnpm add zarinpal-checkout
 ## Usage
 
 Official ZarinPal documentation: [https://www.zarinpal.com/docs/](https://www.zarinpal.com/docs/)
+Project wiki: [https://github.com/siamak/zarinpal-checkout/wiki](https://github.com/siamak/zarinpal-checkout/wiki)
 
 ### Backward-compatible API (recommended for existing users)
 
