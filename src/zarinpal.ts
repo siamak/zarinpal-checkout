@@ -72,16 +72,18 @@ export class ZarinPalCheckout {
   }
 
   public async PaymentRequest(input: PaymentRequestInput): Promise<PaymentRequestResponse> {
+    const metadata: RequestPayload['metadata'] = {
+      ...(input.Email !== undefined ? { email: input.Email } : {}),
+      ...(input.Mobile !== undefined ? { mobile: input.Mobile } : {})
+    };
+
     const data = await this.request(API_PATHS.paymentRequest, {
       merchant_id: this.merchant,
       currency: this.currency,
       amount: input.Amount,
       callback_url: input.CallbackURL,
       description: input.Description,
-      metadata: {
-        email: input.Email,
-        mobile: input.Mobile
-      }
+      ...(Object.keys(metadata).length > 0 ? { metadata } : {})
     });
 
     return {
@@ -101,11 +103,11 @@ export class ZarinPalCheckout {
     return {
       status: data.code,
       message: data.message,
-      cardHash: data.card_hash,
-      cardPan: data.card_pan,
-      refId: data.ref_id,
-      feeType: data.fee_type,
-      fee: data.fee
+      ...(data.card_hash !== undefined ? { cardHash: data.card_hash } : {}),
+      ...(data.card_pan !== undefined ? { cardPan: data.card_pan } : {}),
+      ...(data.ref_id !== undefined ? { refId: data.ref_id } : {}),
+      ...(data.fee_type !== undefined ? { feeType: data.fee_type } : {}),
+      ...(data.fee !== undefined ? { fee: data.fee } : {})
     };
   }
 
