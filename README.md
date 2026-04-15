@@ -2,13 +2,23 @@
 
 A modern, type-safe ZarinPal checkout client for Node.js. This `1.0.0` release keeps backward-compatible method names while upgrading internals, tooling, and tests.
 
+[![npm version](https://img.shields.io/npm/v/zarinpal-checkout.svg)](https://www.npmjs.com/package/zarinpal-checkout)
+[![CI](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml/badge.svg)](https://github.com/siamak/zarinpal-checkout/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 ## Features
 
 - ✅ TypeScript-first with bundled type definitions
 - ✅ Backward-compatible APIs (`create`, `PaymentRequest`, `PaymentVerification`, `UnverifiedTransactions`, `RefreshAuthority`, `TokenBeautifier`)
+- ✅ Options-based client creation with `createWithOptions`
+- ✅ Sandbox and production mode support
+- ✅ Currency support for `IRR` and `IRT`
+- ✅ Configurable request timeout handling
 - ✅ Fast built-in Node.js test runner (no Vite dependency)
 - ✅ Strict linting + type-checking workflows
 - ✅ Rollup build output (ESM + CJS) with declaration bundling
+- ✅ Ready-to-run examples for all public methods
 
 ## Installation
 
@@ -101,3 +111,7 @@ npm install && npm run lint && npm run typecheck && npm test && npm run build
 ## License
 
 MIT
+
+## Author
+
+- siamak
