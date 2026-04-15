@@ -20,7 +20,6 @@ export default [
         exports: 'named'
       }
     ],
-    external: ['axios'],
     plugins: [
       nodeResolve({ preferBuiltins: true }),
       commonjs(),
