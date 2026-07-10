@@ -1,5 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
+import packageJson from '../package.json' with { type: 'json' };
 import ZarinpalCheckout, { createWithOptions, version, ZarinPalCheckout } from '../src/index.ts';
 
 // ---------------------------------------------------------------------------
@@ -46,9 +47,9 @@ describe('module exports', () => {
     assert.equal(typeof ZarinpalCheckout.version, 'string');
   });
 
-  test('named version export matches default export', () => {
+  test('named version export matches default export and package.json', () => {
     assert.equal(version, ZarinpalCheckout.version);
-    assert.equal(version, '1.0.0');
+    assert.equal(version, packageJson.version);
   });
 
   test('ZarinPalCheckout class is exported as a named export', () => {
