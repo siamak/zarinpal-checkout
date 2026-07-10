@@ -124,8 +124,4 @@ npm install && npm run lint && npm run typecheck && npm test && npm run build
 
 ## Author
 
-- Siamak Mokhtari
-
-## License
-
-MIT
+- [Siamak Mokhtari](https://siamak.pro)
