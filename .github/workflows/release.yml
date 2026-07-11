@@ -32,6 +32,10 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
           registry-url: https://registry.npmjs.org
 
+      # Trusted publishing requires npm 11.5.1 or later
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -71,11 +75,11 @@ jobs:
             echo "already_published=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # Authenticates via OIDC trusted publishing; provenance is
+      # generated automatically, no NPM_TOKEN needed.
       - name: Publish to npm
         if: steps.check.outputs.already_published == 'false'
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
 
       - name: Create GitHub release
         if: steps.check.outputs.already_published == 'false' && github.ref_type == 'tag'
