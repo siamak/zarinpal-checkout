@@ -1,4 +1,3 @@
-// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
 import { createRequire } from 'node:module';
 import { ZarinPalCheckout } from './zarinpal.ts';
 import type { Currency, ZarinPalClientOptions, ZarinPalModule } from './types.ts';
@@ -22,5 +21,4 @@ const ZarinpalCheckout: ZarinPalModule = {
 
 export { ZarinPalCheckout, create, createWithOptions, version };
 export default ZarinpalCheckout;
-// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
 export * from './types.ts';

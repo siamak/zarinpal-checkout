@@ -1,4 +1,3 @@
-// @ts-ignore TS5097: Node ESM tests require explicit .ts extension.
 import { API_BASE_URL, API_PATHS, MERCHANT_ID_LENGTH, START_PAY_BASE_URL } from './config.ts';
 import type {
   Currency,

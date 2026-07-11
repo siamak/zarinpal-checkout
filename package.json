@@ -25,7 +25,7 @@
     "clean": "rimraf dist coverage",
     "lint": "eslint src test",
     "test": "node --test --experimental-strip-types test/**/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "node node_modules/typescript7/bin/tsc --noEmit"
   },
   "keywords": [
     "zarinpal",
@@ -51,6 +51,7 @@
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^24",
     "@typescript-eslint/eslint-plugin": "^8.58.2",
     "@typescript-eslint/parser": "^8.58.2",
     "eslint": "^9.39.4",
@@ -59,7 +60,8 @@
     "rollup": "^4.40.0",
     "rollup-plugin-dts": "^6.2.1",
     "tslib": "^2.8.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3",
+    "typescript7": "npm:typescript@^7.0.2"
   },
   "packageManager": "pnpm@10.4.1",
   "pnpm": {
