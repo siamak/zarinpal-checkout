@@ -32,6 +32,10 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
           registry-url: https://registry.npmjs.org
 
+      # Trusted publishing requires npm 11.5.1 or later
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -60,12 +64,25 @@ jobs:
             exit 1
           fi
 
+      - name: Check if version is already on npm
+        id: check
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "zarinpal-checkout@${VERSION}" version >/dev/null 2>&1; then
+            echo "Version ${VERSION} is already published; skipping publish"
+            echo "already_published=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Authenticates via OIDC trusted publishing; provenance is
+      # generated automatically, no NPM_TOKEN needed.
       - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: steps.check.outputs.already_published == 'false'
+        run: npm publish --access public
 
       - name: Create GitHub release
+        if: steps.check.outputs.already_published == 'false' && github.ref_type == 'tag'
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
